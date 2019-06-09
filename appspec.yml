@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /src
+    destination: /var/html/
+hooks:
+  BeforeInstall:
+    - location: nginx_stop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: nginx_start.sh
+      timeout: 300
+      runas: root
